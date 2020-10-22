@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+input{
+    outline: 0;
+    border: 0;
+    border: 1px solid #ccc;
+}
+a{
+    text-decoration: none;
+}
+h1,h2,h3,h4,h5{
+    padding: 0;
+    margin: 0;
+}
+/* 让头部的展开收起菜单让字消失只显示图标 */
+.el-menu--collapse .el-submenu__title span {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    visibility: hidden;
+    display: inline-block;
+}
+
+.el-menu--collapse .el-menu-item .el-submenu__icon-arrow, .el-menu--collapse .el-submenu .el-submenu__title .el-submenu__icon-arrow {
+    display: none;
+}
+.el-menu-item-group .el-menu-item{
+   padding:0 0 0 30px;
+
+}
+
+.el-menu-item-group .el-menu-item-group__title{
+    padding:0
+}
+/* 进度条的样式 */
+#nprogress .bar{
+    background-color: hotpink !important;
+}

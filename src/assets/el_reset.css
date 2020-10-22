@@ -1,0 +1,49 @@
+/* 为了防止别处的样式也受影响，所以前面加上父元素类名 */
+/* .home.el-carousel{
+    background-color: yellow;
+   } */
+
+html{
+    height: 100%;
+}
+body{
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* 表单样式 */
+.el-form{
+    width: 400px;
+    background: rgba(0,0,0,0.2);
+    position: fixed;
+    right: 10%;
+    top: 20%;
+    padding-bottom: 70px;
+    
+}
+/* 输入框样式 */
+.login .el-input__inner{
+    width: 250px;
+}
+/* 提交按钮样式 */
+.login .el-button{
+    width: 250px ;
+
+}
+/* 背景视频样式 */
+.login video{
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+    z-index: -1;
+
+}
+/* 后台页面设置高度自适应 */
+#app,.houtai,.el-container{
+    height: 100%;
+}

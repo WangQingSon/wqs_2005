@@ -1,0 +1,86 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "830344",
+      "name": "首页",
+      "font_class": "icon4",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "857468",
+      "name": "资料",
+      "font_class": "ziliao",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "2080133",
+      "name": "宿舍",
+      "font_class": "sushe",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "3715388",
+      "name": "项目管理",
+      "font_class": "xiangmuguanli",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "3789322",
+      "name": "考勤",
+      "font_class": "icon-test",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "3858882",
+      "name": "数据统计",
+      "font_class": "shujutongji",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "4676600",
+      "name": "管理中心",
+      "font_class": "guanlizhongxin",
+      "unicode": "e70e",
+      "unicode_decimal": 59150
+    },
+    {
+      "icon_id": "7450657",
+      "name": "展开",
+      "font_class": "zhankai",
+      "unicode": "e668",
+      "unicode_decimal": 58984
+    },
+    {
+      "icon_id": "7674864",
+      "name": "展开",
+      "font_class": "daohangzhankai-",
+      "unicode": "e712",
+      "unicode_decimal": 59154
+    },
+    {
+      "icon_id": "12734635",
+      "name": "用户中心",
+      "font_class": "icon-safe-bluefuben",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "12884217",
+      "name": "学员管理",
+      "font_class": "xueyuanguanli",
+      "unicode": "e6ac",
+      "unicode_decimal": 59052
+    }
+  ]
+}
