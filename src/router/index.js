@@ -28,7 +28,7 @@ const routes = [
   //     import(/* webpackChunkName: "about" */ "../pag/About.vue")
   // },
   {
-    path:"/Login",
+    path:"/login",
     name:"login",
     component:login,
   },
@@ -36,13 +36,13 @@ const routes = [
     path:"*",
     component:() =>import(/*webpackChunkName:"page404"*/ "../pages/page404")
   },
-  // {
-  //   path:"/houtai",
-  //   component: "houtai",
-  //   component:() => import(/*webpackChunkName:"houtai"*/ "../pages/houtai"),
-  //   children: allRoutes,
+  {
+    path:"/houtai",
+    component: "houtai",
+    component:() => import(/*webpackChunkName:"houtai"*/ "../pages/houtai"),
+    // children: allRoutes,
    
-  // }
+  }
 ];
 
 const router = new VueRouter({

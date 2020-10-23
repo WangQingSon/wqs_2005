@@ -47,3 +47,18 @@ body{
 #app,.houtai,.el-container{
     height: 100%;
 }
+ .el-input{
+    width: 100px !important;
+}
+.yzm_input .el-input__inner{
+    width: 100%;
+   
+  }
+.yzm{
+    background: yellow ;
+    display: inline-block;
+    width: 150px;
+    height: 44px;
+    cursor: pointer;
+    /* margin-left:50px ; */
+}

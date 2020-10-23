@@ -15,3 +15,10 @@ export const login = (username,password) =>  axios({
 
 // 获取用户菜单                                 用户菜单的接口
 export const getMenuList = () => axios.get("/permission/getMenuList")
+
+// 获取验证码
+export const getYzm = () => axios.get("/users/getCaptcha")
+// 刷新验证码
+export const refreshYzm = () => axios.get("/users/refreshCaptcha")
+// 校验验证码
+export const verifyYzm =(yzm) => axios.get(`/users/verifyCaptcha?captcha=${yzm}`)

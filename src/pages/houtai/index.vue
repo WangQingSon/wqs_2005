@@ -47,9 +47,9 @@
                 <!-- 内容区域 -->
                 <el-main>
               <el-breadcrumb separator-class="el-icon-arrow-right">
-                  <el-breadcrumb-item :to="{ path: '/houtai' }">首页</el-breadcrumb-item>
+                  <el-breadcrumb-item :to="{ path: '/houtai/welcome' }">首页</el-breadcrumb-item>
                   <el-breadcrumb-item 
-                  :to="{path:crumb}"
+                  :to="{path:crumb.path}"
                   v-for="crumb in crumbs">
                     {{crumb.meta.name}}
                   </el-breadcrumb-item>
@@ -70,6 +70,7 @@
         isCollapse: false
       }
     },
+   
     methods: {
       handleOpen(key, keyPath) {
         console.log(key, keyPath);
@@ -102,7 +103,7 @@
     computed: {
       //           用户信息    左侧菜单信息  面包屑指定路由
       ...mapState(["userInfo","menuList","crumbs"])
-    }
+    },
     
   }
 </script>

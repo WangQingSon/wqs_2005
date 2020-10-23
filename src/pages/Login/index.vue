@@ -5,11 +5,20 @@
                 <br>
                 <br>
                 <el-form-item label="用户名：" prop="username">
-                    <el-input type="" v-model="loginForm.username" autocomplete="off"  @keydown.enter="add"></el-input>
+                    <el-input type="" v-model="loginForm.username" autocomplete="off"  ></el-input>
                 </el-form-item>
                
                 <el-form-item label="密码：" prop="password">
-                    <el-input type="password" v-model="loginForm.password" autocomplete="off" ></el-input>
+                    <el-input type="password" v-model="loginForm.password" autocomplete="off" @keyup.enter.native="submitForm('loginForm')"></el-input>
+                </el-form-item>
+
+                <el-form-item label="验证码：" prop="yzm">
+                    <el-input type="" v-model="loginForm.yzm" autocomplete="off" class="yzm_input" 
+                      ></el-input>
+                    <span class="yzm"
+                    v-html="yzmSvg" 
+                    @click="refYzm"   >验证码</span>
+                    
                 </el-form-item>
 
                 <el-form-item>
@@ -26,7 +35,7 @@
         color: #fff;
         margin: 100px 0 50px;
     }
- 
+   
 </style>
 <script>
   /*
@@ -39,39 +48,53 @@
 
 
 
-//  引入login方法
- import {login} from "@/api"
+//  引入login，获取验证码，刷新验证码，校验验证码
+ import {login,getYzm,refreshYzm,verifyYzm} from "@/api"
 
 //  引入辅助函数
 import {mapMutations} from "vuex"
 
   export default {
     data() {
+                 
         // 用户名使用正则规范 4-16(字母数字下划线减号)
-        // var uPattern = /^[a-zA-Z0-9 -]{4,16}$/;
+        //  var uPattern = /^[a-zA-Z0-9 -]{4,16}$/;
         // if(!uPattern.test(value)){
-        //     callback("4-16位(字母数字下划线减号)")
+        //     callback(new Error("请输入用户名4-16位"))
         // }else{
         //     callback()
         // }
+        // 校验用户名
       var validateUsername = (login, value, callback) => {
         if(value===""){
-            callback(new Error("请输入用户名"))
+           callback(new Error("请输入用户名"))
         }else{
             callback()
         }
       };
+      // 校验密码
       var validatePassword = (login, value, callback) => {
-       if(value===""){
+       if(value==="" || value.length!=5){
            callback(new Error("请输入密码"))
        }else{
            callback()
        }
       };
+      // 校验验证码
+       var validateYzm = (login, value, callback) => {
+        if(value===""){
+            callback(new Error("请输入用户名验证码"))
+        }else{
+            callback()
+        }
+      };
       return {
+        yzmSvg:"",
         loginForm: {
           username: '',
           password: '',
+          // 存放后台获取的验证码svg结构
+          yzm:'',
         },
         logins: {
           username: [
@@ -80,21 +103,45 @@ import {mapMutations} from "vuex"
           password: [
             { validator: validatePassword, trigger: 'blur' }
           ],
+          yzm: [
+            { validator: validateYzm, trigger: 'blur' }
+          ],
     
         }
       };
     },
+    mounted () {
+      this.set_yzm()
+    },
     methods: {
-      add(){
-        console.log();
+      // 封装设置验证码方法
+      set_yzm() {
+        getYzm()
+        .then(res=>{
+          this.yzmSvg = res.data.img
+        })
+      },
+      // 刷新验证码
+      refYzm(){
+        this.set_yzm()
       },
       // 映射SET_USERINFOR
       ...mapMutations(["SET_USERINFO"]),
       submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
+        this.$refs[formName].validate( async (valid) => {
           // 代表本地校验通过
           if (valid) {
-            // 解构赋值
+            // 校验验证码
+            let yzmres = await verifyYzm(this.loginForm.yzm)
+            if(!yzmres.data.state){
+              this.$message.error("验证码输入错误，请重新输入")
+              return
+            }
+            // if(!yzmres.data.state){
+            //   this.$message.error("验证码输入错误，重新输入")
+            //     return
+            // }
+            // 加载动画
             const loading = this.$loading({
              lock: true,
              text: '玩命儿加载中(╥╯^╰╥)',
